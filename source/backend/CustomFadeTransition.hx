@@ -61,8 +61,15 @@ class CustomFadeTransition extends MusicBeatSubstate {
 		if(transGradient.y >= targetPos)
 		{
 			close();
-			if(finishCallback != null) finishCallback();
-			finishCallback = null;
 		}
+	}
+
+	override function close():Void
+	{
+		if (finishCallback != null) {
+			finishCallback();
+			finishCallback == null;
+		}
+		super.close();
 	}
 }
